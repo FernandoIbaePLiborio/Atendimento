@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>GPS - Atuação</title>
+		
+		<h:outputStylesheet library="css" name="selecao-listbox-style.css" />
+		<link rel="stylesheet" href="${facesContext.externalContext.requestContextPath}/resources/font-awesome/css/font-awesome.min.css" />
+		<link REL="SHORTCUT ICON" HREF="${facesContext.externalContext.requestContextPath}/resources/images/favicon.ico" type="image/x-icon" />
+		 
+	</h:head>
+	
+	<h:body>
+		<ui:include src="wait.xhtml" />
+		<div class="silver-gradient-background">
+			<ui:include src="header.xhtml" />
+		</div>
+		<div class="content">
+			<ui:insert name="content" />
+		</div>
+	</h:body>	
+
+</html>

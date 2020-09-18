@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="AtuacaoGPS" transaction-type="JTA">
+	
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/ATUACAO</jta-data-source>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		
+		<properties>
+			<property name="eclipselink.weaving" value="static" />
+			<property name="eclipselink.target-database" value="Oracle" />
+			<property name="eclipselink.cache.size.default" value="500" />
+			<property name="eclipselink.flush-clear.cache" value="Drop" />
+			<property name="eclipselink.temporal.mutable" value="true" />
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.logging.level.sql" value="FINE"/>
+			<property name="eclipselink.logging.parameters" value="true"/>
+			<property name="eclipselink.logging.timestamp" value="true"/>
+			<property name="eclipselink.logging.exceptions" value="true" />
+			<property name="eclipselink.logging.session" value="true"/>
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.jdbc.batch-writing" value="none"/>
+		</properties>
+		
+	</persistence-unit>
+</persistence>
