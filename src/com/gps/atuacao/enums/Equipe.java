@@ -3,7 +3,8 @@ package com.gps.atuacao.enums;
 public enum Equipe {
 	
 	GPS("GPS"),
-	URA("URA");
+	URA("URA"),
+	ATENDIMENTO("Atendimento");
 	
 	private String valor;
 

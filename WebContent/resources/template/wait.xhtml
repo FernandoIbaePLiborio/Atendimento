@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<style type="text/css">
+		#ajaxRequestStatus_modal.ui-widget-overlay {  
+		    filter: alpha(opacity=0) !important;
+		    opacity: 0.05 !important;
+		    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)" !important;
+		    background-color: #000066;
+	  	}
+	</style>
+	
+	<h:body>
+		<p:ajaxStatus onstart="PF('ajaxRequestStatus').show();" onsuccess="PF('ajaxRequestStatus').hide();" />
+		<p:dialog id="ajaxRequestStatus" widgetVar="ajaxRequestStatus" showHeader="false" resizable="false" modal="true">
+			<center>
+				<p:graphicImage value="/resources/images/load.gif" />
+			</center>
+		</p:dialog>
+	</h:body>
+	
+</html>

@@ -89,14 +89,14 @@ public class Requisicao {
 			}
 			if (CollectionUtils.isNotEmpty(atuantes)) {
 				
-				if (!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()
-						&& !atuantes.stream().filter(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()) {
-					defeito.setAtuacao(TipoAtuacao.AMBOS.getValor());
-				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType()))) {
-					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO.getValor());
-				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType()))) {
-					defeito.setAtuacao(TipoAtuacao.FUNCIONAL.getValor());
-				}
+//				if (!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()
+//						&& !atuantes.stream().filter(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()) {
+//					defeito.setAtuacao(TipoAtuacao.AMBOS.getValor());
+//				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType()))) {
+//					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO.getValor());
+//				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType()))) {
+//					defeito.setAtuacao(TipoAtuacao.FUNCIONAL.getValor());
+//				}
 				List<String> resp = new ArrayList<String>();
 				for (Integrante integrante : atuantes) {
 					

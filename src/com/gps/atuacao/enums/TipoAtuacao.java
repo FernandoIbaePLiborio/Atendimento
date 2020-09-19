@@ -2,10 +2,12 @@ package com.gps.atuacao.enums;
 
 public enum TipoAtuacao {
 	
-	DESENVOLVIMENTO("Desenvolvimento"),
+	DESENVOLVIMENTO_GPS("Desenvolvimento GPS"),
+	DESENVOLVIMENTO_URA("Desenvolvimento URA"),
 	FUNCIONAL("Funcional"),
 	AMBOS("Ambos"),
 	URA("URA"),
+	ATENDIMENTO("Atendimento"),
 	OUTRAS_ESQUIPES("Outras Equipes");
 
 	private String valor;

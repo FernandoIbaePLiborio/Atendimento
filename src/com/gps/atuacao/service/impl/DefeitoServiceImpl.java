@@ -70,7 +70,7 @@ public class DefeitoServiceImpl implements DefeitoService {
 						Integrante integrante = new Integrante();
 						
 						integrante.setName(row.getCell(0).getStringCellValue());
-						integrante.setType(TipoAtuacao.DESENVOLVIMENTO.getValor());
+						integrante.setType(TipoAtuacao.DESENVOLVIMENTO_GPS.getValor());
 						integrantes.add(integrante);
 					}
 					if (!Objects.isNull(row.getCell(1)) && StringUtils.isNotEmpty(row.getCell(1).getStringCellValue())) {
@@ -91,7 +91,7 @@ public class DefeitoServiceImpl implements DefeitoService {
 						Integrante integrante = new Integrante();
 						
 						integrante.setName(row.getCell(0).getStringCellValue());
-						integrante.setType(TipoAtuacao.URA.getValor());
+						integrante.setType(TipoAtuacao.DESENVOLVIMENTO_URA.getValor());
 						integrantes.add(integrante);
 					}
 				}
@@ -169,18 +169,23 @@ public class DefeitoServiceImpl implements DefeitoService {
 			}
 			if (CollectionUtils.isNotEmpty(atuantes)) {
 				
-				if (!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()
+				if (!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO_GPS.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()
 						&& !atuantes.stream().filter(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()) {
 					defeito.setAtuacao(TipoAtuacao.AMBOS.getValor());
 					defeito.setEquipe(Equipe.GPS.getValor());
-				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.DESENVOLVIMENTO.getValor().equals(i.getType()))) {
-					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO.getValor());
+				} else if ((!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO_GPS.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty() 
+						|| !atuantes.stream().filter(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty())
+						&& !atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO_URA.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()) {
+					defeito.setAtuacao(TipoAtuacao.ATENDIMENTO.getValor());
+					defeito.setEquipe(Equipe.ATENDIMENTO.getValor());
+				}else if (atuantes.stream().anyMatch(i -> TipoAtuacao.DESENVOLVIMENTO_GPS.getValor().equals(i.getType()))) {
+					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO_GPS.getValor());
 					defeito.setEquipe(Equipe.GPS.getValor());
 				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.FUNCIONAL.getValor().equals(i.getType()))) {
 					defeito.setAtuacao(TipoAtuacao.FUNCIONAL.getValor());
 					defeito.setEquipe(Equipe.GPS.getValor());
-				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.URA.getValor().equals(i.getType()))) {
-					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO.getValor());
+				} else if (atuantes.stream().anyMatch(i -> TipoAtuacao.DESENVOLVIMENTO_URA.getValor().equals(i.getType()))) {
+					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO_URA.getValor());
 					defeito.setEquipe(Equipe.URA.getValor());
 				}
 				List<String> resp = new ArrayList<String>();
