@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
-			<version>2.7.1</version>
+			<version>2.5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>br.com.gvt</groupId>

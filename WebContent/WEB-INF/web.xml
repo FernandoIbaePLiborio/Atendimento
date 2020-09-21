@@ -17,7 +17,7 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.xhtml</welcome-file>
+		<welcome-file>pages/index.xhtml</welcome-file>
 	</welcome-file-list>
 
 	<context-param>

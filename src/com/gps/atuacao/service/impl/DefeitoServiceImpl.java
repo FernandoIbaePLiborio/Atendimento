@@ -46,8 +46,6 @@ public class DefeitoServiceImpl implements DefeitoService {
 	@EJB
 	private DefeitoDao defeitoDao;
 
-    private Requisicao requisicaoService;
-
 	@Override
 	public void salvar(Defeito defeito) {
 		return;
@@ -91,6 +89,13 @@ public class DefeitoServiceImpl implements DefeitoService {
 						Integrante integrante = new Integrante();
 						
 						integrante.setName(row.getCell(0).getStringCellValue());
+						integrante.setType(TipoAtuacao.DESENVOLVIMENTO_URA.getValor());
+						integrantes.add(integrante);
+					}
+					if (!Objects.isNull(row.getCell(1)) && StringUtils.isNotEmpty(row.getCell(1).getStringCellValue())) {
+						Integrante integrante = new Integrante();
+						
+						integrante.setName(row.getCell(1).getStringCellValue());
 						integrante.setType(TipoAtuacao.DESENVOLVIMENTO_URA.getValor());
 						integrantes.add(integrante);
 					}
