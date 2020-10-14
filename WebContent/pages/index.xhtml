@@ -11,7 +11,7 @@
 	<h:body>
 		<ui:composition template="../template/main.xhtml">
 			<ui:define name="content">
-			    <h:form id="formUploadArquivo" enctype="multipart/form-data">
+			    <h:form id="formUploadArquivo" enctype="multipart/form-data" acceptcharset="ISO-8859-1">
 			   		<p:messages id="msgUploadAtuacao" showDetail="true" closable="true" escape="false" />
 			        <h:panelGrid>
 			 			<h:panelGroup>
@@ -46,7 +46,7 @@
 							<div align="right">
 					        	<h:commandLink>
 									<p:graphicImage title="Exportar" style="border: 0px;" name="/images/excel.gif" />
-									<p:dataExporter type="xlsx" target=":formUploadArquivo:dtDefeitos" fileName="Atuação Atendimento" />
+									<p:dataExporter type="xlsx" target=":formUploadArquivo:dtDefeitos" fileName="Atendimento" />
 								</h:commandLink>
 							</div>
 						</f:facet>

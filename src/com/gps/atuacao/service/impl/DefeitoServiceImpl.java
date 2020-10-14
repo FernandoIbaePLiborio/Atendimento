@@ -9,8 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.ejb.EJB;
@@ -32,7 +36,6 @@ import com.gps.atuacao.enums.TipoAtuacao;
 import com.gps.atuacao.model.Defeito;
 import com.gps.atuacao.model.Integrante;
 import com.gps.atuacao.service.DefeitoService;
-import com.gps.atuacao.service.request.Requisicao;
 
 import br.com.gvt.jeemodelinfra.exception.DAOException;
 
@@ -157,21 +160,26 @@ public class DefeitoServiceImpl implements DefeitoService {
 			InputStream is = connection.getInputStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is));
 			String line;
-			StringBuffer response = new StringBuffer();
-			List<Integrante> atuantes = new ArrayList<>();
+			//StringBuffer response = new StringBuffer();
+			HashSet<Integrante> atuantes = new HashSet<>();
 			while ((line = rd.readLine()) != null) {
-				response.append(line);
-				response.append('\r');
-				response.append('\r');
-			}
-			String res = response.toString();
-			for (Integrante integrante : integrantes) {
-				
-				if (res.toUpperCase().contains(integrante.getName().toUpperCase())) {
-					atuantes.add(integrante);
-					System.out.println(integrante.getName());
+				for (Integrante integrante : integrantes) {
+					
+					if(line.toString().toUpperCase().contains(integrante.getName().toUpperCase())) {
+						atuantes.add(integrante);
+						System.out.println(integrante.getName());
+					}
 				}
 			}
+			
+//			String res = response.toString();
+//			for (Integrante integrante : integrantes) {
+//				
+//				if (res.toUpperCase().contains(integrante.getName().toUpperCase())) {
+//					atuantes.add(integrante);
+//					System.out.println(integrante.getName());
+//				}
+//			}
 			if (CollectionUtils.isNotEmpty(atuantes)) {
 				
 				if (!atuantes.stream().filter(i -> TipoAtuacao.DESENVOLVIMENTO_GPS.getValor().equals(i.getType())).collect(Collectors.toList()).isEmpty()
@@ -193,8 +201,12 @@ public class DefeitoServiceImpl implements DefeitoService {
 					defeito.setAtuacao(TipoAtuacao.DESENVOLVIMENTO_URA.getValor());
 					defeito.setEquipe(Equipe.URA.getValor());
 				}
+				
+				List<Integrante> list = new ArrayList(atuantes);
+				Collections.reverse(list);
+				
 				List<String> resp = new ArrayList<String>();
-				for (Integrante integrante : atuantes) {
+				for (Integrante integrante : list) {
 					
 					resp.add(integrante.getName());
 				}

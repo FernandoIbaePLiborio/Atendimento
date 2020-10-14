@@ -69,7 +69,12 @@ div.header-title-nowrap {
 
 div.silver-gradient-background {
 
-	background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
+	background: rgb(19,70,179);
+	background: -moz-linear-gradient(90deg, rgba(19,70,179,1) 13%, rgba(105,25,245,1) 63%, rgba(17,25,139,1) 100%);
+	background: -webkit-linear-gradient(90deg, rgba(19,70,179,1) 13%, rgba(105,25,245,1) 63%, rgba(17,25,139,1) 100%);
+	background: linear-gradient(90deg, rgba(19,70,179,1) 13%, rgba(105,25,245,1) 63%, rgba(17,25,139,1) 100% );
+	filter: progid :DXImageTransform.Microsoft.gradient (startColorstr ="#1346b3", endColorstr ="#11198b", GradientType =1 );
+	height: 55px;
 }
 
 div.border {
