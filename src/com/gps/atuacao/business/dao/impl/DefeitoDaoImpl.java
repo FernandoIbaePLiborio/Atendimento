@@ -37,7 +37,7 @@ public class DefeitoDaoImpl extends AbstractGenericDAO<Defeito, Long> implements
 			jpql.append(" environment_type AS ESTEIRA, SISTEMA_ORIGEM, SISTEMA_CORRECAO, VENDOR AS EQUIPE, RDM AS CRQ, REOPENED, FIXING, DESENVOLVIMENTO, FUNCIONAL, ");
 			jpql.append(" data_criacao, data_fechamento, CONT_TESTE, cont_desenvolvimento, cont_funcional, reopen, responsavel_correcao ");
 			jpql.append(" FROM stg_defeitos ");
-			jpql.append(" WHERE data_fechamento >= '2020-05-01' ");
+			jpql.append(" WHERE data_fechamento >= '2020-01-01' ");
 			jpql.append(" AND (SISTEMA_ORIGEM LIKE '%GPS%' OR SISTEMA_CORRECAO LIKE '%GPS%' OR SISTEMA_ORIGEM LIKE '%FIXA%' OR SISTEMA_CORRECAO LIKE '%FIXA%' OR SISTEMA_ORIGEM LIKE '%URA%' OR SISTEMA_CORRECAO LIKE '%URA%' OR VENDOR LIKE '%TELEFONICA%')" );
 			jpql.append(" AND BUG_STATUS IN('Closed', 'Not Fixed', 'Rejected') ORDER BY bugid DESC ");
 			final Query query = this.em.createNativeQuery(jpql.toString());
